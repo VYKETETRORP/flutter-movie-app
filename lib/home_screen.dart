@@ -29,41 +29,65 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Text(
-              'Trending Movies',
-              style: GoogleFonts.aBeeZee(fontSize:25)
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: CarouselSlider.builder(
-                itemCount: 10, 
-                options: CarouselOptions(
-                  height: 300 , autoPlay: true,
-                  viewportFraction: 0.55,
-                  enlargeCenterPage: true,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  autoPlayAnimationDuration: const Duration(seconds: 2)  
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(
+                'Trending Movies',
+                style: GoogleFonts.aBeeZee(fontSize:25)
+              ),
+              const SizedBox(height: 16,),
+              SizedBox(
+                width: double.infinity,
+                child: CarouselSlider.builder(
+                  itemCount: 10, 
+                  options: CarouselOptions(
+                    height: 300 , autoPlay: true,
+                    viewportFraction: 0.55,
+                    enlargeCenterPage: true,
+                    pageSnapping: true,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    autoPlayAnimationDuration: const Duration(seconds: 2)  
 
 
-                ),
-                itemBuilder: (context, ItemIndex, pageViewIndex){
+                  ),
+                  itemBuilder: (context, ItemIndex, pageViewIndex){
 
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(2),
-                    child: Container(
-                      height: 300,
-                      width: 200,
-                      color: Colors.amber,
-                      
-                    ),
-                  );
-                }
-               
-              )
-            )
-          ],
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(2),
+                      child: Container(
+                        height: 300,
+                        width: 200,
+                        color: Colors.amber,
+                        
+                      ),
+                    );
+                  }
+                 
+                )
+              ),
+              const SizedBox(height: 16,),
+              Text("Top rated movies", style: GoogleFonts.aBeeZee(fontSize : 25)),
+              const SizedBox(height: 32,),
+              SizedBox(height: 200, width: double.infinity,
+              child: ListView.builder(scrollDirection: Axis.horizontal,physics: const BouncingScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context , index){
+                return Padding(padding: const EdgeInsets.all(8.0),
+                child: Container(color: Colors.amber, height: 200, width:200),
+                );
+
+              }
+              ),
+              
+              ),
+           
+              
+
+
+            ],
+          ),
         ),
       ),
     );
