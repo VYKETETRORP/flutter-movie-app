@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class MovieSlider extends StatelessWidget {
   const MovieSlider({
     Key? key,
@@ -18,8 +19,8 @@ class MovieSlider extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                      color: Colors.amber, height: 200, width: 200)),
+                  child:
+                      Container(color: Colors.amber, height: 200, width: 200)),
             );
           }),
     );
