@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   late Future<List<Movie>> trendingMovies;
   @override
   void initState() {
