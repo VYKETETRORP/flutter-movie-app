@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app_assignment/constants.dart';
 
 class TrendingSlider extends StatelessWidget {
   const TrendingSlider({
     Key? key,
+    required this.snapshot,
   }) : super(key: key);
+
+  final AsyncSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +23,18 @@ class TrendingSlider extends StatelessWidget {
                 enlargeCenterPage: true,
                 pageSnapping: true,
                 autoPlayCurve: Curves.fastOutSlowIn,
-                autoPlayAnimationDuration:
-                    const Duration(seconds: 2)),
-            itemBuilder: (context, ItemIndex, pageViewIndex) {
+                autoPlayAnimationDuration: const Duration(seconds: 2)),
+            itemBuilder: (context, itemIndex, pageViewIndex) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Container(
+                child: SizedBox(
                   height: 300,
                   width: 200,
-                  color: Colors.amber,
+                  child: Image.network(
+                    '${Constants.imagePath}${snapshot.data[itemIndex].posterPath}',
+                    filterQuality: FilterQuality.high,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               );
             }));
